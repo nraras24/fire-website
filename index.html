@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaslighter</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+        #input-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #name-input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        #submit-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #output {
+            display: none;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2em;
+            z-index: 1;
+        }
+        .fire-background {
+            background-image: url('https://media.istockphoto.com/id/1328395235/vector/fire-emoji-icon.jpg?s=612x612&w=0&k=20&c=LMqmebDm3137x_e5H3aF4ccqYTMYB7Ioj2uYVoHJK_Y=');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            animation: flash 1s infinite;
+        }
+        @keyframes flash {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div id="input-form">
+        <label for="name-input">Enter your name:</label>
+        <input type="text" id="name-input" placeholder="Your name">
+        <button id="submit-btn">Submit</button>
+    </div>
+    <div id="output">
+        <h1 id="message"></h1>
+    </div>
+    <div class="fire-background" id="fire-background" style="display:none;"></div>
+
+    <script>
+        document.getElementById('submit-btn').addEventListener('click', function() {
+            var name = document.getElementById('name-input').value;
+            if (name) {
+                document.getElementById('message').textContent = name + " is a gaslighter";
+                document.getElementById('input-form').style.display = 'none';
+                document.getElementById('output').style.display = 'block';
+                document.getElementById('fire-background').style.display = 'block';
+            } else {
+                alert("Please enter your name.");
+            }
+        });
+    </script>
+</body>
+</html>
